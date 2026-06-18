@@ -30,7 +30,6 @@ import {
   X,
 } from "lucide-react";
 import {
-  Zap,
   BarChart3,
   Lock,
   Cpu,
