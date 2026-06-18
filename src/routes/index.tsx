@@ -958,7 +958,7 @@ function Home() {
             </p>
           </div>
           <FooterCol title="Services" links={["Consulting", "Web Development", "Mobile Apps", "Custom Software", "Cloud"]} />
-          <FooterCol title="Products" links={["TrackSuite", "Watt Wallet Buddy"]} />
+          <FooterCol title="Products" links={["TrackSuite", "ServiceLayer", "DevFlow", "BizActivate"]} />
           <FooterCol title="Company" links={["About", "Process", "Packages", "Contact"]} />
         </div>
         <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-border flex flex-col md:flex-row gap-4 items-center justify-between text-xs text-muted-foreground">
