@@ -29,6 +29,19 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import {
+  Zap,
+  BarChart3,
+  Lock,
+  Cpu,
+  ClipboardList,
+  Search,
+  Building2,
+  Handshake,
+  Target,
+  CalendarCheck,
+  FileText,
+} from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import founderImg from "@/assets/founder.jpg";
@@ -71,12 +84,14 @@ const products = [
 ];
 
 const whyUs = [
-  { icon: MapPin, title: "South African Expertise", desc: "Local roots, global standards." },
-  { icon: Sparkles, title: "Tailored Solutions", desc: "Built around your business, not the other way around." },
-  { icon: TrendingUp, title: "Modern Technologies", desc: "Production-grade stacks, future-proof architecture." },
-  { icon: MessageCircle, title: "Transparent Communication", desc: "Clear timelines, honest progress, no surprises." },
-  { icon: ShieldCheck, title: "Scalable Systems", desc: "From MVP to enterprise — we design for growth." },
-  { icon: Users, title: "Long-Term Partnerships", desc: "We stay invested long after launch." },
+  { icon: Sparkles, title: "Tailored Solutions, Not Templates", desc: "Every engagement is custom-built around your unique goals." },
+  { icon: MapPin, title: "South African Business Expertise", desc: "Deep understanding of the local market, regulations and culture." },
+  { icon: Rocket, title: "Practical Technology Implementation", desc: "We ship working systems — not slideware or theory." },
+  { icon: Building2, title: "Enterprise-Level Thinking", desc: "Architecture and governance designed to scale safely." },
+  { icon: MessageCircle, title: "Transparent Communication", desc: "Clear timelines, honest progress, no hidden surprises." },
+  { icon: Handshake, title: "Long-Term Partnership Approach", desc: "We stay invested long after launch and delivery." },
+  { icon: Target, title: "Focus on Business Outcomes", desc: "Technology that moves the metrics that matter to you." },
+  { icon: TrendingUp, title: "Scalable Growth Strategies", desc: "From MVP to enterprise — built to grow with you." },
 ];
 
 const processSteps = [
@@ -102,28 +117,118 @@ const testimonials = [
 
 const packages = [
   {
-    name: "Starter",
-    price: "R 14 900",
-    cadence: "from / project",
-    tagline: "For startups and small businesses.",
-    features: ["Discovery workshop", "Single-product website or app", "Basic automation setup", "30 days post-launch support"],
+    name: "Starter Package",
+    icon: Rocket,
+    idealFor: "Startups, entrepreneurs and small businesses beginning their digital journey.",
+    features: [
+      "Initial consultation and business needs assessment",
+      "Basic website or digital presence setup",
+      "Technology recommendations",
+      "Basic IT support guidance",
+      "Email and collaboration setup assistance",
+      "Project planning and roadmap",
+    ],
+    bestFor: ["New businesses", "Small teams", "Manual-to-digital transitions"],
+    pricing: "Custom quote based on requirements",
+    cta: "Get Started",
     highlighted: false,
   },
   {
-    name: "Growth",
-    price: "R 39 900",
-    cadence: "from / project",
-    tagline: "For growing companies scaling operations.",
-    features: ["Strategy & roadmap", "Custom web or mobile build", "CRM & workflow integration", "Cloud setup", "90 days support"],
+    name: "Growth Package",
+    icon: TrendingUp,
+    idealFor: "Growing businesses looking to improve efficiency and scale operations.",
+    features: [
+      "Business and technology assessment",
+      "Custom website or business application development",
+      "IT support and systems optimisation",
+      "Cybersecurity review and recommendations",
+      "Data reporting and dashboard setup",
+      "Project management and delivery oversight",
+      "Ongoing consulting support",
+    ],
+    bestFor: ["Growing SMEs", "Organisations modernising operations", "Teams needing custom systems"],
+    pricing: "Custom quote based on project scope",
+    cta: "Book a Consultation",
     highlighted: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    cadence: "tailored scope",
-    tagline: "For established organizations and complex systems.",
-    features: ["Full digital transformation", "Custom platforms & integrations", "Dedicated delivery team", "Cloud architecture & DevOps", "SLA & long-term partnership"],
+    name: "Enterprise Package",
+    icon: Building2,
+    idealFor: "Corporate organisations and large-scale projects.",
+    features: [
+      "Enterprise technology consulting",
+      "Custom software and systems development",
+      "Advanced cybersecurity assessments",
+      "Data and AI strategy consulting",
+      "Digital transformation planning",
+      "Dedicated project management",
+      "Integration with existing systems",
+      "Long-term support and optimisation",
+    ],
+    bestFor: ["Corporates", "Multi-department organisations", "Large transformation initiatives"],
+    pricing: "Tailored enterprise engagement",
+    cta: "Speak to an Expert",
     highlighted: false,
+  },
+  {
+    name: "Technical Assessment Package",
+    icon: Search,
+    idealFor: "Businesses wanting an independent review of their current technology environment.",
+    features: [
+      "Infrastructure assessment",
+      "Website and application review",
+      "Cybersecurity assessment",
+      "Process and workflow analysis",
+      "Technology maturity evaluation",
+      "Risk identification",
+      "Improvement recommendations",
+    ],
+    bestFor: ["Comprehensive assessment report", "Executive findings summary", "Recommended action plan"],
+    bestForLabel: "Deliverables",
+    pricing: "Custom assessment engagement",
+    cta: "Request an Assessment",
+    highlighted: false,
+  },
+  {
+    name: "Project Management Package",
+    icon: ClipboardList,
+    idealFor: "Businesses needing professional oversight of technology projects.",
+    features: [
+      "Project planning",
+      "Scope management",
+      "Timeline management",
+      "Stakeholder coordination",
+      "Risk management",
+      "Progress reporting",
+      "Delivery governance",
+    ],
+    bestFor: ["Software projects", "IT implementations", "Digital transformation initiatives"],
+    pricing: "Based on project duration and complexity",
+    cta: "Discuss Your Project",
+    highlighted: false,
+  },
+];
+
+const specialistAreas = [
+  {
+    icon: Code2,
+    title: "Custom Software Development",
+    items: ["Business applications", "Internal systems", "Workflow automation", "Web platforms", "Mobile applications"],
+  },
+  {
+    icon: Cpu,
+    title: "IT Support & Technology Consulting",
+    items: ["Technology strategy", "Infrastructure planning", "System optimisation", "Digital transformation guidance"],
+  },
+  {
+    icon: Lock,
+    title: "Cybersecurity Services",
+    items: ["Security assessments", "Risk identification", "Security improvement roadmaps", "Security awareness guidance"],
+  },
+  {
+    icon: BarChart3,
+    title: "Data & AI Solutions",
+    items: ["Business intelligence", "Dashboard development", "Data analytics", "AI opportunity assessments", "Automation strategy", "AI implementation planning"],
   },
 ];
 
