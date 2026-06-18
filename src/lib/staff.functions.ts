@@ -71,8 +71,8 @@ export const listStaff = createServerFn({ method: "GET" })
         id: u.id,
         email: u.email ?? "",
         created_at: u.created_at,
-        last_sign_in_at: u.last_sign_in_at,
-        invited_at: u.invited_at,
+        last_sign_in_at: u.last_sign_in_at ?? null,
+        invited_at: u.invited_at ?? null,
         confirmed_at: u.confirmed_at ?? u.email_confirmed_at ?? null,
         full_name:
           (profileById.get(u.id) as any)?.full_name ??
