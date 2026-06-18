@@ -43,7 +43,8 @@ import {
 } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
-import founderImg from "@/assets/founder.jpg";
+import founderAsset from "@/assets/rezaan-achmat.jpg.asset.json";
+const founderImg = founderAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
