@@ -45,6 +45,10 @@ import logoAsset from "@/assets/logo.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import founderAsset from "@/assets/rezaan-achmat.jpg.asset.json";
 const founderImg = founderAsset.url;
+import tracksuiteAsset from "@/assets/tracksuite.png.asset.json";
+import servicelayerAsset from "@/assets/servicelayer.png.asset.json";
+import devflowAsset from "@/assets/devflow.png.asset.json";
+import bizactivateAsset from "@/assets/bizactivate.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,10 +82,82 @@ const services = [
   { icon: Cloud, title: "Cloud Solutions", desc: "Cloud migration, infrastructure setup and managed services on AWS, Azure & GCP.", items: ["Cloud migration", "Infrastructure", "Managed services"] },
 ];
 
-const products = [
-  { name: "TrackSuite", tag: "Operations Platform", desc: "A project and operations management platform built to improve productivity, visibility and accountability across teams.", features: ["Project tracking", "Team workflows", "Real-time dashboards"] },
-  { name: "Watt Wallet Buddy", tag: "Utility & Expense", desc: "A smart utility and expense management solution helping households and SMEs track and reduce running costs.", features: ["Utility tracking", "Budgeting tools", "Smart alerts"] },
+type ProductStatus = "live" | "dev" | "concept";
+const productGroups: {
+  status: ProductStatus;
+  statusLabel: string;
+  groupTitle: string;
+  items: {
+    logo: string;
+    name: string;
+    tagline: string;
+    desc: string;
+    sectionA: { title: string; items: string[] };
+    sectionB: { title: string; items: string[] };
+    link?: { label: string; href: string };
+  }[];
+}[] = [
+  {
+    status: "live",
+    statusLabel: "Live & Deployed",
+    groupTitle: "Live Solutions",
+    items: [
+      {
+        logo: tracksuiteAsset.url,
+        name: "UM Tech TrackSuite",
+        tagline: "IT Asset Monitoring Platform",
+        desc: "Full-stack IT asset management platform helping organisations manage, track and monitor technology assets through a centralised dashboard.",
+        sectionA: { title: "Key Features", items: ["Asset registration & management", "Asset status tracking", "Centralised dashboard", "Backend API integration", "PostgreSQL database management"] },
+        sectionB: { title: "Technology Stack", items: ["React", "Node.js", "PostgreSQL", "Railway", "Vercel"] },
+        link: { label: "Visit Live Platform", href: "https://tracksuite-asset-manager.vercel.app/" },
+      },
+    ],
+  },
+  {
+    status: "dev",
+    statusLabel: "In Development",
+    groupTitle: "Platforms In Development",
+    items: [
+      {
+        logo: servicelayerAsset.url,
+        name: "UM Tech ServiceLayer",
+        tagline: "Central Business Logic API",
+        desc: "A modular backend platform serving as the central business logic layer for current and future Ubuntu Mzansi Tech Consulting Group applications.",
+        sectionA: { title: "Purpose", items: ["Central API layer", "Authentication services", "Assessment engine", "Business rules engine", "Future AI integration", "Shared ecosystem services"] },
+        sectionB: { title: "Technology Stack", items: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Prisma", "Python"] },
+      },
+      {
+        logo: devflowAsset.url,
+        name: "UM Tech DevFlow",
+        tagline: "AI-First Developer Workflow SaaS",
+        desc: "A workflow and project execution platform designed to support project delivery, task management and operational workflows within the Ubuntu Mzansi Tech ecosystem.",
+        sectionA: { title: "Purpose", items: ["Project management", "Task management", "Delivery tracking", "Workflow automation", "Team collaboration"] },
+        sectionB: { title: "Planned Integrations", items: ["UM Tech ServiceLayer", "Future client portals", "Internal consulting operations"] },
+      },
+    ],
+  },
+  {
+    status: "concept",
+    statusLabel: "Concept / Product Development",
+    groupTitle: "Concept / Product Development Initiatives",
+    items: [
+      {
+        logo: bizactivateAsset.url,
+        name: "UM TCG BizActivate",
+        tagline: "Activate Your Business",
+        desc: "A business activation and digital enablement platform designed to help entrepreneurs, startups and SMEs establish, structure and grow their businesses through guided processes, digital tools and consulting support.",
+        sectionA: { title: "Planned Features", items: ["Business readiness assessments", "Digital maturity assessments", "Business registration guidance", "Compliance checklists", "Technology recommendations", "Project planning tools", "Resource & template library", "AI-assisted business guidance"] },
+        sectionB: { title: "Target Audience", items: ["Entrepreneurs", "Startups", "SMEs", "Emerging business owners", "Organisations undergoing digital transformation"] },
+      },
+    ],
+  },
 ];
+
+const statusStyles: Record<ProductStatus, { dot: string; badge: string; ring: string }> = {
+  live:    { dot: "bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]", badge: "bg-emerald-500/10 text-emerald-300 border-emerald-400/30", ring: "from-emerald-400/30 to-emerald-600/10" },
+  dev:     { dot: "bg-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.8)]",   badge: "bg-amber-500/10 text-amber-300 border-amber-400/30",       ring: "from-amber-400/30 to-amber-600/10" },
+  concept: { dot: "bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]",     badge: "bg-sky-500/10 text-sky-300 border-sky-400/30",             ring: "from-sky-400/30 to-sky-600/10" },
+};
 
 const whyUs = [
   { icon: Sparkles, title: "Tailored Solutions, Not Templates", desc: "Every engagement is custom-built around your unique goals." },
@@ -466,28 +542,127 @@ function Home() {
 
       {/* PRODUCTS */}
       <Section id="products">
-        <SectionHeading eyebrow="Products & Innovations" title="Tools we're building in-house." subtitle="Our own products solving real African business problems." />
-        <div className="grid md:grid-cols-2 gap-6">
-          {products.map((p) => (
-            <div key={p.name} className="relative overflow-hidden rounded-3xl p-8 md:p-10 glass-card hover:shadow-glow transition">
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-30" style={{ background: "var(--gradient-brand)" }} />
-              <div className="relative">
-                <div className="text-xs uppercase tracking-widest text-accent">{p.tag}</div>
-                <h3 className="mt-2 text-3xl font-bold">{p.name}</h3>
-                <p className="mt-3 text-muted-foreground">{p.desc}</p>
-                <ul className="mt-6 grid grid-cols-1 gap-2">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-accent" /> {f}
-                    </li>
+        <SectionHeading
+          eyebrow="Products & Innovations"
+          title="The Ubuntu Mzansi Tech Ecosystem."
+          subtitle="Live, in-development and concept platforms — each engineered to solve real African business problems."
+        />
+        <div className="space-y-16">
+          {productGroups.map((group) => {
+            const s = statusStyles[group.status];
+            return (
+              <div key={group.groupTitle}>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider ${s.badge}`}>
+                    <span className={`w-2 h-2 rounded-full animate-pulse ${s.dot}`} />
+                    {group.statusLabel}
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-bold font-[Space_Grotesk]">{group.groupTitle}</h3>
+                </div>
+                <div className={`grid gap-6 ${group.items.length > 1 ? "lg:grid-cols-2" : "lg:grid-cols-1"}`}>
+                  {group.items.map((p) => (
+                    <article
+                      key={p.name}
+                      className="group relative overflow-hidden rounded-3xl glass-card p-7 md:p-9 transition-all duration-500 hover:-translate-y-1 hover:shadow-glow"
+                    >
+                      <div className={`pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-40 bg-gradient-to-br ${s.ring} transition-opacity duration-500 group-hover:opacity-70`} />
+                      <div className="relative flex flex-col gap-6">
+                        <div className="flex items-start gap-5">
+                          <div className="relative shrink-0">
+                            <div className={`absolute inset-0 rounded-2xl blur-xl opacity-50 bg-gradient-to-br ${s.ring}`} />
+                            <img
+                              src={p.logo}
+                              alt={`${p.name} logo`}
+                              loading="lazy"
+                              className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-xs uppercase tracking-widest text-accent">{p.tagline}</div>
+                            <h4 className="mt-1 text-2xl md:text-[26px] font-bold leading-tight">{p.name}</h4>
+                            <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+                          </div>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-5 pt-2">
+                          <div>
+                            <div className="text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-3">{p.sectionA.title}</div>
+                            <ul className="space-y-2">
+                              {p.sectionA.items.map((it) => (
+                                <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                  <Check className="w-4 h-4 mt-0.5 text-accent shrink-0" /> {it}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold uppercase tracking-wider text-foreground/80 mb-3">{p.sectionB.title}</div>
+                            {p.sectionB.title === "Technology Stack" ? (
+                              <div className="flex flex-wrap gap-2">
+                                {p.sectionB.items.map((it) => (
+                                  <span key={it} className="px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-foreground/90">
+                                    {it}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : (
+                              <ul className="space-y-2">
+                                {p.sectionB.items.map((it) => (
+                                  <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                    <Check className="w-4 h-4 mt-0.5 text-accent shrink-0" /> {it}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </div>
+
+                        {p.link && (
+                          <a
+                            href={p.link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-foreground transition self-start"
+                          >
+                            {p.link.label} <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          </a>
+                        )}
+                      </div>
+                    </article>
                   ))}
-                </ul>
-                <a href="#contact" className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition">
-                  Request a demo <ArrowRight className="w-4 h-4" />
-                </a>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Ecosystem architecture */}
+          <div className="glass-card rounded-3xl p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-6">
+              <Cpu className="w-5 h-5 text-accent" />
+              <h3 className="text-xl md:text-2xl font-bold font-[Space_Grotesk]">Ecosystem Architecture</h3>
+            </div>
+            <p className="text-sm text-muted-foreground mb-6">
+              UM Tech ServiceLayer acts as the central intelligence and business logic layer powering every product across the ecosystem.
+            </p>
+            <div className="flex flex-col items-center gap-4">
+              <div className="px-5 py-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/5 border border-amber-400/30 text-sm font-semibold">
+                UM Tech ServiceLayer <span className="text-muted-foreground font-normal">(Core)</span>
+              </div>
+              <div className="w-px h-6 bg-border" />
+              <div className="grid sm:grid-cols-3 gap-3 w-full max-w-3xl">
+                {[
+                  { name: "TrackSuite", note: "Asset Monitoring", color: "from-emerald-400/20 to-emerald-600/5 border-emerald-400/30" },
+                  { name: "DevFlow", note: "Project Execution", color: "from-violet-400/20 to-violet-600/5 border-violet-400/30" },
+                  { name: "BizActivate", note: "Business Growth", color: "from-sky-400/20 to-sky-600/5 border-sky-400/30" },
+                ].map((n) => (
+                  <div key={n.name} className={`text-center px-4 py-3 rounded-xl bg-gradient-to-br border ${n.color}`}>
+                    <div className="text-sm font-semibold">{n.name}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{n.note}</div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </Section>
 
