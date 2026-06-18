@@ -410,7 +410,6 @@ function Home() {
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-3">
-            <a href="/admin" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Staff Login</a>
             <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-brand text-white text-sm font-medium shadow-glow hover:opacity-90 transition">
               Book Consultation <ArrowRight className="w-4 h-4" />
             </a>
