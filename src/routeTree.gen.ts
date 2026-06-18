@@ -9,38 +9,283 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
+import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin/seo'
+import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin/security'
+import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin/media'
+import { Route as AuthenticatedAdminLeadsRouteImport } from './routes/_authenticated/admin/leads'
+import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin/enquiries'
+import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin/blog'
+import { Route as AuthenticatedAdminActivityRouteImport } from './routes/_authenticated/admin/activity'
+import { Route as AuthenticatedAdminContentServicesRouteImport } from './routes/_authenticated/admin/content.services'
+import { Route as AuthenticatedAdminContentProductsRouteImport } from './routes/_authenticated/admin/content.products'
+import { Route as AuthenticatedAdminContentPackagesRouteImport } from './routes/_authenticated/admin/content.packages'
+import { Route as AuthenticatedAdminContentHomepageRouteImport } from './routes/_authenticated/admin/content.homepage'
 
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminSettingsRoute =
+  AuthenticatedAdminSettingsRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminSeoRoute = AuthenticatedAdminSeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminSecurityRoute =
+  AuthenticatedAdminSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminMediaRoute = AuthenticatedAdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminLeadsRoute = AuthenticatedAdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminEnquiriesRoute =
+  AuthenticatedAdminEnquiriesRouteImport.update({
+    id: '/enquiries',
+    path: '/enquiries',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminActivityRoute =
+  AuthenticatedAdminActivityRouteImport.update({
+    id: '/activity',
+    path: '/activity',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminContentServicesRoute =
+  AuthenticatedAdminContentServicesRouteImport.update({
+    id: '/content/services',
+    path: '/content/services',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminContentProductsRoute =
+  AuthenticatedAdminContentProductsRouteImport.update({
+    id: '/content/products',
+    path: '/content/products',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminContentPackagesRoute =
+  AuthenticatedAdminContentPackagesRouteImport.update({
+    id: '/content/packages',
+    path: '/content/packages',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminContentHomepageRoute =
+  AuthenticatedAdminContentHomepageRouteImport.update({
+    id: '/content/homepage',
+    path: '/content/homepage',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/leads': typeof AuthenticatedAdminLeadsRoute
+  '/admin/media': typeof AuthenticatedAdminMediaRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/content/homepage': typeof AuthenticatedAdminContentHomepageRoute
+  '/admin/content/packages': typeof AuthenticatedAdminContentPackagesRoute
+  '/admin/content/products': typeof AuthenticatedAdminContentProductsRoute
+  '/admin/content/services': typeof AuthenticatedAdminContentServicesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/leads': typeof AuthenticatedAdminLeadsRoute
+  '/admin/media': typeof AuthenticatedAdminMediaRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/content/homepage': typeof AuthenticatedAdminContentHomepageRoute
+  '/admin/content/packages': typeof AuthenticatedAdminContentPackagesRoute
+  '/admin/content/products': typeof AuthenticatedAdminContentProductsRoute
+  '/admin/content/services': typeof AuthenticatedAdminContentServicesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/_authenticated/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/_authenticated/admin/blog': typeof AuthenticatedAdminBlogRoute
+  '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/_authenticated/admin/leads': typeof AuthenticatedAdminLeadsRoute
+  '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
+  '/_authenticated/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
+  '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/content/homepage': typeof AuthenticatedAdminContentHomepageRoute
+  '/_authenticated/admin/content/packages': typeof AuthenticatedAdminContentPackagesRoute
+  '/_authenticated/admin/content/products': typeof AuthenticatedAdminContentProductsRoute
+  '/_authenticated/admin/content/services': typeof AuthenticatedAdminContentServicesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/admin'
+    | '/admin/activity'
+    | '/admin/blog'
+    | '/admin/enquiries'
+    | '/admin/leads'
+    | '/admin/media'
+    | '/admin/security'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/users'
+    | '/admin/'
+    | '/admin/content/homepage'
+    | '/admin/content/packages'
+    | '/admin/content/products'
+    | '/admin/content/services'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/admin/activity'
+    | '/admin/blog'
+    | '/admin/enquiries'
+    | '/admin/leads'
+    | '/admin/media'
+    | '/admin/security'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/users'
+    | '/admin'
+    | '/admin/content/homepage'
+    | '/admin/content/packages'
+    | '/admin/content/products'
+    | '/admin/content/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/reset-password'
+    | '/_authenticated/admin'
+    | '/_authenticated/admin/activity'
+    | '/_authenticated/admin/blog'
+    | '/_authenticated/admin/enquiries'
+    | '/_authenticated/admin/leads'
+    | '/_authenticated/admin/media'
+    | '/_authenticated/admin/security'
+    | '/_authenticated/admin/seo'
+    | '/_authenticated/admin/settings'
+    | '/_authenticated/admin/users'
+    | '/_authenticated/admin/'
+    | '/_authenticated/admin/content/homepage'
+    | '/_authenticated/admin/content/packages'
+    | '/_authenticated/admin/content/products'
+    | '/_authenticated/admin/content/services'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +293,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/settings': {
+      id: '/_authenticated/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AuthenticatedAdminSettingsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/seo': {
+      id: '/_authenticated/admin/seo'
+      path: '/seo'
+      fullPath: '/admin/seo'
+      preLoaderRoute: typeof AuthenticatedAdminSeoRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/security': {
+      id: '/_authenticated/admin/security'
+      path: '/security'
+      fullPath: '/admin/security'
+      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/media': {
+      id: '/_authenticated/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AuthenticatedAdminMediaRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/leads': {
+      id: '/_authenticated/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AuthenticatedAdminLeadsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/enquiries': {
+      id: '/_authenticated/admin/enquiries'
+      path: '/enquiries'
+      fullPath: '/admin/enquiries'
+      preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/blog': {
+      id: '/_authenticated/admin/blog'
+      path: '/blog'
+      fullPath: '/admin/blog'
+      preLoaderRoute: typeof AuthenticatedAdminBlogRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/activity': {
+      id: '/_authenticated/admin/activity'
+      path: '/activity'
+      fullPath: '/admin/activity'
+      preLoaderRoute: typeof AuthenticatedAdminActivityRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/content/services': {
+      id: '/_authenticated/admin/content/services'
+      path: '/content/services'
+      fullPath: '/admin/content/services'
+      preLoaderRoute: typeof AuthenticatedAdminContentServicesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/content/products': {
+      id: '/_authenticated/admin/content/products'
+      path: '/content/products'
+      fullPath: '/admin/content/products'
+      preLoaderRoute: typeof AuthenticatedAdminContentProductsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/content/packages': {
+      id: '/_authenticated/admin/content/packages'
+      path: '/content/packages'
+      fullPath: '/admin/content/packages'
+      preLoaderRoute: typeof AuthenticatedAdminContentPackagesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/content/homepage': {
+      id: '/_authenticated/admin/content/homepage'
+      path: '/content/homepage'
+      fullPath: '/admin/content/homepage'
+      preLoaderRoute: typeof AuthenticatedAdminContentHomepageRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteRouteChildren {
+  AuthenticatedAdminActivityRoute: typeof AuthenticatedAdminActivityRoute
+  AuthenticatedAdminBlogRoute: typeof AuthenticatedAdminBlogRoute
+  AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
+  AuthenticatedAdminLeadsRoute: typeof AuthenticatedAdminLeadsRoute
+  AuthenticatedAdminMediaRoute: typeof AuthenticatedAdminMediaRoute
+  AuthenticatedAdminSecurityRoute: typeof AuthenticatedAdminSecurityRoute
+  AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRoute
+  AuthenticatedAdminSettingsRoute: typeof AuthenticatedAdminSettingsRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminContentHomepageRoute: typeof AuthenticatedAdminContentHomepageRoute
+  AuthenticatedAdminContentPackagesRoute: typeof AuthenticatedAdminContentPackagesRoute
+  AuthenticatedAdminContentProductsRoute: typeof AuthenticatedAdminContentProductsRoute
+  AuthenticatedAdminContentServicesRoute: typeof AuthenticatedAdminContentServicesRoute
+}
+
+const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
+  {
+    AuthenticatedAdminActivityRoute: AuthenticatedAdminActivityRoute,
+    AuthenticatedAdminBlogRoute: AuthenticatedAdminBlogRoute,
+    AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
+    AuthenticatedAdminLeadsRoute: AuthenticatedAdminLeadsRoute,
+    AuthenticatedAdminMediaRoute: AuthenticatedAdminMediaRoute,
+    AuthenticatedAdminSecurityRoute: AuthenticatedAdminSecurityRoute,
+    AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
+    AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
+    AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+    AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+    AuthenticatedAdminContentHomepageRoute:
+      AuthenticatedAdminContentHomepageRoute,
+    AuthenticatedAdminContentPackagesRoute:
+      AuthenticatedAdminContentPackagesRoute,
+    AuthenticatedAdminContentProductsRoute:
+      AuthenticatedAdminContentProductsRoute,
+    AuthenticatedAdminContentServicesRoute:
+      AuthenticatedAdminContentServicesRoute,
+  }
+
+const AuthenticatedAdminRouteRouteWithChildren =
+  AuthenticatedAdminRouteRoute._addFileChildren(
+    AuthenticatedAdminRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
