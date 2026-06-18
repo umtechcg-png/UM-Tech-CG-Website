@@ -29,6 +29,18 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import {
+  BarChart3,
+  Lock,
+  Cpu,
+  ClipboardList,
+  Search,
+  Building2,
+  Handshake,
+  Target,
+  CalendarCheck,
+  FileText,
+} from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import founderImg from "@/assets/founder.jpg";
@@ -71,12 +83,14 @@ const products = [
 ];
 
 const whyUs = [
-  { icon: MapPin, title: "South African Expertise", desc: "Local roots, global standards." },
-  { icon: Sparkles, title: "Tailored Solutions", desc: "Built around your business, not the other way around." },
-  { icon: TrendingUp, title: "Modern Technologies", desc: "Production-grade stacks, future-proof architecture." },
-  { icon: MessageCircle, title: "Transparent Communication", desc: "Clear timelines, honest progress, no surprises." },
-  { icon: ShieldCheck, title: "Scalable Systems", desc: "From MVP to enterprise — we design for growth." },
-  { icon: Users, title: "Long-Term Partnerships", desc: "We stay invested long after launch." },
+  { icon: Sparkles, title: "Tailored Solutions, Not Templates", desc: "Every engagement is custom-built around your unique goals." },
+  { icon: MapPin, title: "South African Business Expertise", desc: "Deep understanding of the local market, regulations and culture." },
+  { icon: Rocket, title: "Practical Technology Implementation", desc: "We ship working systems — not slideware or theory." },
+  { icon: Building2, title: "Enterprise-Level Thinking", desc: "Architecture and governance designed to scale safely." },
+  { icon: MessageCircle, title: "Transparent Communication", desc: "Clear timelines, honest progress, no hidden surprises." },
+  { icon: Handshake, title: "Long-Term Partnership Approach", desc: "We stay invested long after launch and delivery." },
+  { icon: Target, title: "Focus on Business Outcomes", desc: "Technology that moves the metrics that matter to you." },
+  { icon: TrendingUp, title: "Scalable Growth Strategies", desc: "From MVP to enterprise — built to grow with you." },
 ];
 
 const processSteps = [
@@ -102,28 +116,118 @@ const testimonials = [
 
 const packages = [
   {
-    name: "Starter",
-    price: "R 14 900",
-    cadence: "from / project",
-    tagline: "For startups and small businesses.",
-    features: ["Discovery workshop", "Single-product website or app", "Basic automation setup", "30 days post-launch support"],
+    name: "Starter Package",
+    icon: Rocket,
+    idealFor: "Startups, entrepreneurs and small businesses beginning their digital journey.",
+    features: [
+      "Initial consultation and business needs assessment",
+      "Basic website or digital presence setup",
+      "Technology recommendations",
+      "Basic IT support guidance",
+      "Email and collaboration setup assistance",
+      "Project planning and roadmap",
+    ],
+    bestFor: ["New businesses", "Small teams", "Manual-to-digital transitions"],
+    pricing: "Custom quote based on requirements",
+    cta: "Get Started",
     highlighted: false,
   },
   {
-    name: "Growth",
-    price: "R 39 900",
-    cadence: "from / project",
-    tagline: "For growing companies scaling operations.",
-    features: ["Strategy & roadmap", "Custom web or mobile build", "CRM & workflow integration", "Cloud setup", "90 days support"],
+    name: "Growth Package",
+    icon: TrendingUp,
+    idealFor: "Growing businesses looking to improve efficiency and scale operations.",
+    features: [
+      "Business and technology assessment",
+      "Custom website or business application development",
+      "IT support and systems optimisation",
+      "Cybersecurity review and recommendations",
+      "Data reporting and dashboard setup",
+      "Project management and delivery oversight",
+      "Ongoing consulting support",
+    ],
+    bestFor: ["Growing SMEs", "Organisations modernising operations", "Teams needing custom systems"],
+    pricing: "Custom quote based on project scope",
+    cta: "Book a Consultation",
     highlighted: true,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    cadence: "tailored scope",
-    tagline: "For established organizations and complex systems.",
-    features: ["Full digital transformation", "Custom platforms & integrations", "Dedicated delivery team", "Cloud architecture & DevOps", "SLA & long-term partnership"],
+    name: "Enterprise Package",
+    icon: Building2,
+    idealFor: "Corporate organisations and large-scale projects.",
+    features: [
+      "Enterprise technology consulting",
+      "Custom software and systems development",
+      "Advanced cybersecurity assessments",
+      "Data and AI strategy consulting",
+      "Digital transformation planning",
+      "Dedicated project management",
+      "Integration with existing systems",
+      "Long-term support and optimisation",
+    ],
+    bestFor: ["Corporates", "Multi-department organisations", "Large transformation initiatives"],
+    pricing: "Tailored enterprise engagement",
+    cta: "Speak to an Expert",
     highlighted: false,
+  },
+  {
+    name: "Technical Assessment Package",
+    icon: Search,
+    idealFor: "Businesses wanting an independent review of their current technology environment.",
+    features: [
+      "Infrastructure assessment",
+      "Website and application review",
+      "Cybersecurity assessment",
+      "Process and workflow analysis",
+      "Technology maturity evaluation",
+      "Risk identification",
+      "Improvement recommendations",
+    ],
+    bestFor: ["Comprehensive assessment report", "Executive findings summary", "Recommended action plan"],
+    bestForLabel: "Deliverables",
+    pricing: "Custom assessment engagement",
+    cta: "Request an Assessment",
+    highlighted: false,
+  },
+  {
+    name: "Project Management Package",
+    icon: ClipboardList,
+    idealFor: "Businesses needing professional oversight of technology projects.",
+    features: [
+      "Project planning",
+      "Scope management",
+      "Timeline management",
+      "Stakeholder coordination",
+      "Risk management",
+      "Progress reporting",
+      "Delivery governance",
+    ],
+    bestFor: ["Software projects", "IT implementations", "Digital transformation initiatives"],
+    pricing: "Based on project duration and complexity",
+    cta: "Discuss Your Project",
+    highlighted: false,
+  },
+];
+
+const specialistAreas = [
+  {
+    icon: Code2,
+    title: "Custom Software Development",
+    items: ["Business applications", "Internal systems", "Workflow automation", "Web platforms", "Mobile applications"],
+  },
+  {
+    icon: Cpu,
+    title: "IT Support & Technology Consulting",
+    items: ["Technology strategy", "Infrastructure planning", "System optimisation", "Digital transformation guidance"],
+  },
+  {
+    icon: Lock,
+    title: "Cybersecurity Services",
+    items: ["Security assessments", "Risk identification", "Security improvement roadmaps", "Security awareness guidance"],
+  },
+  {
+    icon: BarChart3,
+    title: "Data & AI Solutions",
+    items: ["Business intelligence", "Dashboard development", "Data analytics", "AI opportunity assessments", "Automation strategy", "AI implementation planning"],
   },
 ];
 
@@ -455,36 +559,115 @@ function Home() {
 
       {/* PACKAGES */}
       <Section id="packages" className="bg-secondary/30">
-        <SectionHeading eyebrow="Packages" title="Engagements that scale with you." subtitle="Transparent starting points. Every engagement is tailored to your goals." />
-        <div className="grid md:grid-cols-3 gap-6">
+        <SectionHeading
+          eyebrow="Packages & Services"
+          title="Strategic technology partnership — not commodity services."
+          subtitle="Every business is unique. We tailor our solutions based on your goals, technology environment and project requirements."
+        />
+
+        <div className="mb-12 glass-card rounded-3xl p-8 md:p-10 relative overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-30" style={{ background: "var(--gradient-brand)" }} />
+          <div className="relative flex flex-col md:flex-row gap-6 md:items-center justify-between">
+            <div className="max-w-3xl">
+              <div className="text-xs uppercase tracking-widest text-accent">Our Approach</div>
+              <p className="mt-3 text-lg md:text-xl leading-relaxed">
+                Every business is unique. We tailor our solutions based on your goals, technology environment, and project requirements. <span className="text-foreground/90">Contact us for a customised proposal and consultation.</span>
+              </p>
+            </div>
+            <a href="#contact" className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-brand text-white font-medium shadow-glow hover:scale-[1.02] transition">
+              Request a Proposal <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((p) => (
-            <div key={p.name} className={`relative rounded-3xl p-8 transition hover:-translate-y-1 ${p.highlighted ? "bg-gradient-brand text-white shadow-glow" : "glass-card"}`}>
+            <div
+              key={p.name}
+              className={`group relative rounded-3xl p-8 transition hover:-translate-y-1 hover:shadow-glow ${
+                p.highlighted ? "bg-gradient-brand text-white shadow-glow" : "glass-card"
+              }`}
+            >
               {p.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-background border border-border text-xs uppercase tracking-widest text-accent">Most popular</div>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-background border border-border text-xs uppercase tracking-widest text-accent">
+                  Most popular
+                </div>
               )}
-              <h3 className={`text-xl font-semibold ${p.highlighted ? "text-white" : ""}`}>{p.name}</h3>
-              <p className={`text-sm mt-1 ${p.highlighted ? "text-white/80" : "text-muted-foreground"}`}>{p.tagline}</p>
-              <div className="mt-6">
-                <div className="text-4xl font-bold tracking-tight">{p.price}</div>
-                <div className={`text-xs uppercase tracking-widest mt-1 ${p.highlighted ? "text-white/70" : "text-muted-foreground"}`}>{p.cadence}</div>
+              <div
+                className={`w-12 h-12 rounded-xl grid place-items-center ${
+                  p.highlighted ? "bg-white/15 text-white" : "bg-gradient-brand text-white shadow-glow"
+                }`}
+              >
+                <p.icon className="w-6 h-6" />
               </div>
-              <ul className="mt-6 space-y-2 text-sm">
+              <h3 className={`mt-5 text-xl font-semibold ${p.highlighted ? "text-white" : ""}`}>{p.name}</h3>
+              <p className={`mt-2 text-sm ${p.highlighted ? "text-white/85" : "text-muted-foreground"}`}>{p.idealFor}</p>
+
+              <div className={`mt-6 text-xs uppercase tracking-widest ${p.highlighted ? "text-white/70" : "text-accent"}`}>Includes</div>
+              <ul className="mt-3 space-y-2 text-sm">
                 {p.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2">
-                    <Check className={`w-4 h-4 ${p.highlighted ? "text-white" : "text-accent"}`} /> {f}
+                  <li key={f} className="flex items-start gap-2">
+                    <Check className={`w-4 h-4 mt-0.5 shrink-0 ${p.highlighted ? "text-white" : "text-accent"}`} />
+                    <span className={p.highlighted ? "text-white/95" : ""}>{f}</span>
                   </li>
                 ))}
               </ul>
+
+              <div className={`mt-6 text-xs uppercase tracking-widest ${p.highlighted ? "text-white/70" : "text-accent"}`}>
+                {p.bestForLabel ?? "Best For"}
+              </div>
+              <ul className="mt-3 space-y-1.5 text-sm">
+                {p.bestFor.map((b) => (
+                  <li key={b} className={`flex items-start gap-2 ${p.highlighted ? "text-white/90" : "text-muted-foreground"}`}>
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${p.highlighted ? "bg-white/80" : "bg-accent"}`} />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+
+              <div className={`mt-6 pt-5 border-t ${p.highlighted ? "border-white/20" : "border-border"}`}>
+                <div className={`text-xs uppercase tracking-widest ${p.highlighted ? "text-white/70" : "text-muted-foreground"}`}>Pricing</div>
+                <div className={`mt-1 text-sm font-medium ${p.highlighted ? "text-white" : ""}`}>{p.pricing}</div>
+              </div>
+
               <a
                 href="#contact"
-                className={`mt-8 inline-flex w-full justify-center items-center gap-2 px-5 py-3 rounded-full font-medium transition ${
+                className={`mt-6 inline-flex w-full justify-center items-center gap-2 px-5 py-3 rounded-full font-medium transition ${
                   p.highlighted ? "bg-background text-foreground hover:opacity-90" : "bg-gradient-brand text-white shadow-glow hover:scale-[1.01]"
                 }`}
               >
-                Get started <ArrowRight className="w-4 h-4" />
+                {p.cta} <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           ))}
+        </div>
+
+        {/* SPECIALIST AREAS */}
+        <div className="mt-24">
+          <SectionHeading
+            eyebrow="Specialist Service Areas"
+            title="Deep expertise across the technology stack."
+            subtitle="Beyond our core packages, we bring focused specialist capability to every engagement."
+          />
+          <div className="grid md:grid-cols-2 gap-6">
+            {specialistAreas.map((s) => (
+              <div key={s.title} className="group glass-card rounded-2xl p-7 hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-brand grid place-items-center text-white shadow-glow">
+                    <s.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold">{s.title}</h3>
+                </div>
+                <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {s.items.map((i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-accent shrink-0" /> {i}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -493,18 +676,24 @@ function Home() {
         <div className="relative overflow-hidden rounded-3xl p-12 md:p-20 text-center glass-card">
           <div className="absolute inset-0 opacity-40" style={{ background: "var(--gradient-hero)" }} />
           <div className="relative">
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              Ready to Transform Your Business <br /> <span className="text-gradient">with Technology?</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card text-xs uppercase tracking-widest text-accent">
+              <Sparkles className="w-3.5 h-3.5" /> Lead with strategy
+            </div>
+            <h2 className="mt-5 text-4xl md:text-6xl font-bold leading-tight">
+              Let's Build the Right Technology <br /> <span className="text-gradient">Strategy for Your Business</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Partner with Ubuntu Mzansi Tech Consulting Group and unlock new opportunities through innovation.
+              Whether you're launching a startup, modernising operations, managing a technology project, or exploring AI opportunities — Ubuntu Mzansi Tech Consulting Group can help.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-brand text-white font-medium shadow-glow hover:scale-[1.02] transition">
-                Schedule Consultation <ArrowRight className="w-4 h-4" />
+                <FileText className="w-4 h-4" /> Request a Proposal
               </a>
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card font-medium hover:bg-white/5">
-                Contact Us
+                <CalendarCheck className="w-4 h-4" /> Schedule a Consultation
+              </a>
+              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card font-medium hover:bg-white/5">
+                <MessageCircle className="w-4 h-4" /> Contact Our Team
               </a>
             </div>
           </div>
