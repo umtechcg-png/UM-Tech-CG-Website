@@ -191,6 +191,63 @@ const testimonials = [
   { quote: "From discovery to launch, everything was transparent. Truly partner-grade work.", name: "Future Client", role: "Director, NGO" },
 ];
 
+type PricingTier = {
+  name: string;
+  idealFor: string;
+  price: string;
+  priceSuffix?: string;
+  priceLabel: string;
+  badge?: string;
+  icon: typeof Rocket;
+};
+
+const pricingTiers: PricingTier[] = [
+  {
+    name: "Starter Package",
+    idealFor: "Ideal for startups and small businesses",
+    price: "R2,500",
+    priceLabel: "Starting From",
+    icon: Rocket,
+  },
+  {
+    name: "Growth Package",
+    idealFor: "Ideal for growing SMEs and business optimisation",
+    price: "R10,000",
+    priceLabel: "Starting From",
+    badge: "Most popular",
+    icon: TrendingUp,
+  },
+  {
+    name: "Enterprise Package",
+    idealFor: "Ideal for corporate and large-scale solutions",
+    price: "Custom Quote",
+    priceLabel: "Tailored Engagement",
+    icon: Building2,
+  },
+  {
+    name: "Technical Assessment",
+    idealFor: "Business technology and systems assessment",
+    price: "R1,500",
+    priceLabel: "Starting From",
+    icon: ClipboardList,
+  },
+  {
+    name: "Project Management",
+    idealFor: "Professional project planning and delivery oversight",
+    price: "R3,500",
+    priceSuffix: "/month",
+    priceLabel: "Starting From",
+    icon: CalendarCheck,
+  },
+  {
+    name: "BizActivate",
+    idealFor: "Business activation and growth support for entrepreneurs and SMEs",
+    price: "R999",
+    priceLabel: "Starting From",
+    icon: Sparkles,
+  },
+];
+
 const packages = [
   {
     name: "Starter Package",
@@ -389,6 +446,7 @@ function Home() {
     ["Products", "#products"],
     ["Process", "#process"],
     ["Packages", "#packages"],
+    ["Pricing", "#pricing"],
     ["Contact", "#contact"],
   ] as const;
 
@@ -820,8 +878,71 @@ function Home() {
           ))}
         </div>
 
-        {/* SPECIALIST AREAS */}
-        <div className="mt-24">
+      </Section>
+
+      {/* PRICING */}
+      <Section id="pricing">
+        <SectionHeading
+          eyebrow="Indicative Pricing"
+          title="Transparent starting points for every stage of growth."
+          subtitle="Choose a package aligned to your goals. Every engagement is scoped, quoted, and confirmed after an initial consultation."
+        />
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {pricingTiers.map((t) => (
+            <div
+              key={t.name}
+              className="group relative glass-card rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow overflow-hidden"
+            >
+              <div
+                className="absolute -top-24 -right-24 w-56 h-56 rounded-full blur-3xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"
+                style={{ background: "var(--gradient-brand)" }}
+              />
+              <div className="relative">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-brand grid place-items-center text-white shadow-glow shrink-0">
+                    <t.icon className="w-6 h-6" />
+                  </div>
+                  {t.badge && (
+                    <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border border-accent/40 text-accent">
+                      {t.badge}
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-5 text-xl font-semibold">{t.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{t.idealFor}</p>
+
+                <div className="mt-6">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    {t.priceLabel}
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-1.5">
+                    <span className="text-3xl font-bold text-gradient">{t.price}</span>
+                    {t.priceSuffix && (
+                      <span className="text-sm text-muted-foreground">{t.priceSuffix}</span>
+                    )}
+                  </div>
+                </div>
+
+                <a
+                  href="#contact"
+                  className="mt-7 inline-flex w-full justify-center items-center gap-2 px-5 py-3 rounded-full font-medium bg-gradient-brand text-white shadow-glow hover:scale-[1.02] transition"
+                >
+                  Request a Quote <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-10 mx-auto max-w-3xl text-center text-sm text-muted-foreground leading-relaxed glass-card rounded-2xl px-6 py-5">
+          All pricing is indicative and may vary based on project scope, complexity, timelines, and client requirements. A detailed proposal will be provided following an initial consultation.
+        </p>
+      </Section>
+
+      {/* SPECIALIST AREAS (continued) */}
+      <Section className="bg-secondary/30">
+        <div>
           <SectionHeading
             eyebrow="Specialist Service Areas"
             title="Deep expertise across the technology stack."
