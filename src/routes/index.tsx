@@ -821,14 +821,6 @@ function Home() {
           ))}
         </div>
 
-        {/* SPECIALIST AREAS */}
-        <div className="mt-24">
-          <SectionHeading
-            eyebrow="Specialist Service Areas"
-            title="Deep expertise across the technology stack."
-            subtitle="Beyond our core packages, we bring focused specialist capability to every engagement."
-          />
-        </div>
       </Section>
 
       {/* PRICING */}
