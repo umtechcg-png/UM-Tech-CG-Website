@@ -451,6 +451,27 @@ function Home() {
     ["Contact", "#contact"],
   ] as const;
 
+  const [activeHash, setActiveHash] = useState<string>("");
+  useEffect(() => {
+    const ids = navLinks.map(([, h]) => h.slice(1));
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (els.length === 0) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveHash(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <main className="min-h-dvh bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
@@ -464,9 +485,23 @@ function Home() {
             </div>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            {navLinks.map(([l, h]) => (
-              <a key={h} href={h} className="text-muted-foreground hover:text-foreground transition-colors">{l}</a>
-            ))}
+            {navLinks.map(([l, h]) => {
+              const isActive = activeHash === h;
+              return (
+                <a
+                  key={h}
+                  href={h}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative transition-colors ${
+                    isActive
+                      ? "text-transparent bg-clip-text bg-gradient-brand font-semibold after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:rounded-full after:bg-gradient-brand"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l}
+                </a>
+              );
+            })}
           </nav>
           <div className="hidden md:flex items-center gap-3">
             <a href="#contact" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-brand text-white text-sm font-medium shadow-glow hover:opacity-90 transition">
@@ -479,9 +514,24 @@ function Home() {
         </div>
         {navOpen && (
           <div className="md:hidden border-t border-border bg-background/95 px-6 py-4 flex flex-col gap-3">
-            {navLinks.map(([l, h]) => (
-              <a key={h} href={h} onClick={() => setNavOpen(false)} className="text-sm py-1 text-muted-foreground">{l}</a>
-            ))}
+            {navLinks.map(([l, h]) => {
+              const isActive = activeHash === h;
+              return (
+                <a
+                  key={h}
+                  href={h}
+                  onClick={() => setNavOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`text-sm py-1 ${
+                    isActive
+                      ? "text-transparent bg-clip-text bg-gradient-brand font-semibold"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {l}
+                </a>
+              );
+            })}
             <a href="#contact" onClick={() => setNavOpen(false)} className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-gradient-brand text-white text-sm font-medium">Book Consultation</a>
           </div>
         )}
