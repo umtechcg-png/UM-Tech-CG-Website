@@ -192,6 +192,66 @@ const testimonials = [
 ];
 
 const packages = [
+] as never;
+
+type PricingTier = {
+  name: string;
+  idealFor: string;
+  price: string;
+  priceSuffix?: string;
+  priceLabel: string;
+  badge?: string;
+  icon: typeof Rocket;
+};
+
+const pricingTiers: PricingTier[] = [
+  {
+    name: "Starter Package",
+    idealFor: "Ideal for startups and small businesses",
+    price: "R2,500",
+    priceLabel: "Starting From",
+    icon: Rocket,
+  },
+  {
+    name: "Growth Package",
+    idealFor: "Ideal for growing SMEs and business optimisation",
+    price: "R10,000",
+    priceLabel: "Starting From",
+    badge: "Most popular",
+    icon: TrendingUp,
+  },
+  {
+    name: "Enterprise Package",
+    idealFor: "Ideal for corporate and large-scale solutions",
+    price: "Custom Quote",
+    priceLabel: "Tailored Engagement",
+    icon: Building2,
+  },
+  {
+    name: "Technical Assessment",
+    idealFor: "Business technology and systems assessment",
+    price: "R1,500",
+    priceLabel: "Starting From",
+    icon: ClipboardList,
+  },
+  {
+    name: "Project Management",
+    idealFor: "Professional project planning and delivery oversight",
+    price: "R3,500",
+    priceSuffix: "/month",
+    priceLabel: "Starting From",
+    icon: CalendarCheck,
+  },
+  {
+    name: "BizActivate",
+    idealFor: "Business activation and growth support for entrepreneurs and SMEs",
+    price: "R999",
+    priceLabel: "Starting From",
+    icon: Sparkles,
+  },
+];
+
+const _packagesLegacy = [
   {
     name: "Starter Package",
     icon: Rocket,
