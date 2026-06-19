@@ -191,9 +191,6 @@ const testimonials = [
   { quote: "From discovery to launch, everything was transparent. Truly partner-grade work.", name: "Future Client", role: "Director, NGO" },
 ];
 
-const packages = [
-] as never;
-
 type PricingTier = {
   name: string;
   idealFor: string;
@@ -251,7 +248,7 @@ const pricingTiers: PricingTier[] = [
   },
 ];
 
-const _packagesLegacy = [
+const packages = [
   {
     name: "Starter Package",
     icon: Rocket,
