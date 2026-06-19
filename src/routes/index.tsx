@@ -42,6 +42,7 @@ import {
   FileText,
 } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
+import badgeAsset from "@/assets/umtechcg-badge.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import founderAsset from "@/assets/rezaan-achmat.jpg.asset.json";
 const founderImg = founderAsset.url;
@@ -1082,7 +1083,10 @@ function Home() {
           <FooterCol title="Company" links={["About", "Process", "Packages", "Contact"]} />
         </div>
         <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-border flex flex-col md:flex-row gap-4 items-center justify-between text-xs text-muted-foreground">
-          <div>© 2026 Ubuntu Mzansi Tech Consulting Group. All Rights Reserved.</div>
+          <div className="flex items-center gap-3">
+            <img src={badgeAsset.url} alt="UM Tech CG badge" className="w-10 h-10 rounded-full" />
+            <span>© 2026 UM Tech CG. All Rights Reserved.</span>
+          </div>
           <div className="flex gap-4"><a href="#" className="hover:text-foreground">Privacy</a><a href="#" className="hover:text-foreground">Terms</a></div>
         </div>
       </footer>
