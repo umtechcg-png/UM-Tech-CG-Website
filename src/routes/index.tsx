@@ -389,6 +389,7 @@ function Home() {
     ["Products", "#products"],
     ["Process", "#process"],
     ["Packages", "#packages"],
+    ["Pricing", "#pricing"],
     ["Contact", "#contact"],
   ] as const;
 
