@@ -1,55 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
-  ArrowRight,
-  Briefcase,
-  Code2,
-  Smartphone,
-  Settings2,
-  Workflow,
-  Palette,
-  Cloud,
-  Sparkles,
-  ShieldCheck,
-  Users,
-  TrendingUp,
-  MessageCircle,
-  Mail,
-  Phone,
-  MapPin,
-  Linkedin,
-  Facebook,
-  Check,
-  Quote,
-  Compass,
-  Lightbulb,
-  PenTool,
-  Rocket,
-  LifeBuoy,
-  Menu,
-  X,
-} from "lucide-react";
-import {
-  BarChart3,
-  Lock,
-  Cpu,
-  ClipboardList,
-  Search,
-  Building2,
-  Handshake,
-  Target,
-  CalendarCheck,
-  FileText,
+  ArrowRight, Sparkles, MessageCircle, Check, Quote,
+  CalendarCheck, FileText,
 } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
-import badgeAsset from "@/assets/umtechcg-badge.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
-import founderAsset from "@/assets/rezaan-achmat.jpg.asset.json";
-const founderImg = founderAsset.url;
-import tracksuiteAsset from "@/assets/tracksuite.png.asset.json";
-import servicelayerAsset from "@/assets/servicelayer.png.asset.json";
-import devflowAsset from "@/assets/devflow.png.asset.json";
-import bizactivateAsset from "@/assets/bizactivate.png.asset.json";
+import { SiteLayout } from "@/components/site/site-layout";
+import {
+  Section, SectionHeading, whyUs, testimonials, specialistAreas,
+} from "@/components/site/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
