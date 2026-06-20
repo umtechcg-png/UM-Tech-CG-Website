@@ -13,6 +13,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -52,6 +53,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PackagesRoute = PackagesRouteImport.update({
@@ -167,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
   '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
   '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
   '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -245,6 +254,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/packages'
+    | '/pricing'
     | '/process'
     | '/products'
     | '/reset-password'
@@ -270,6 +280,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/packages'
+    | '/pricing'
     | '/process'
     | '/products'
     | '/reset-password'
@@ -295,6 +306,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/packages'
+    | '/pricing'
     | '/process'
     | '/products'
     | '/reset-password'
@@ -322,6 +334,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   PackagesRoute: typeof PackagesRoute
+  PricingRoute: typeof PricingRoute
   ProcessRoute: typeof ProcessRoute
   ProductsRoute: typeof ProductsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
@@ -356,6 +369,13 @@ declare module '@tanstack/react-router' {
       path: '/process'
       fullPath: '/process'
       preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/packages': {
@@ -562,6 +582,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   PackagesRoute: PackagesRoute,
+  PricingRoute: PricingRoute,
   ProcessRoute: ProcessRoute,
   ProductsRoute: ProductsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
