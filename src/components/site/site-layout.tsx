@@ -8,13 +8,6 @@ import { navLinks, FooterCol } from "./site-data";
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
 
-  const navItemClass = (isActive: boolean) =>
-    `relative transition-colors ${
-      isActive
-        ? "text-transparent bg-clip-text bg-gradient-brand font-semibold after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:rounded-full after:bg-gradient-brand"
-        : "text-muted-foreground hover:text-foreground"
-    }`;
-
   return (
     <main className="min-h-dvh bg-background text-foreground overflow-x-hidden">
       {/* NAV */}
