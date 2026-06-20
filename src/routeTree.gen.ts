@@ -9,8 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PackagesRouteImport } from './routes/packages'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
@@ -29,14 +36,49 @@ import { Route as AuthenticatedAdminContentProductsRouteImport } from './routes/
 import { Route as AuthenticatedAdminContentPackagesRouteImport } from './routes/_authenticated/admin/content.packages'
 import { Route as AuthenticatedAdminContentHomepageRouteImport } from './routes/_authenticated/admin/content.homepage'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackagesRoute = PackagesRouteImport.update({
+  id: '/packages',
+  path: '/packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -134,8 +176,15 @@ const AuthenticatedAdminContentHomepageRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
+  '/process': typeof ProcessRoute
+  '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
   '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/admin/blog': typeof AuthenticatedAdminBlogRoute
@@ -154,8 +203,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
+  '/process': typeof ProcessRoute
+  '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
   '/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/admin/blog': typeof AuthenticatedAdminBlogRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
@@ -175,8 +231,15 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/packages': typeof PackagesRoute
+  '/pricing': typeof PricingRoute
+  '/process': typeof ProcessRoute
+  '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/_authenticated/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/_authenticated/admin/blog': typeof AuthenticatedAdminBlogRoute
@@ -197,8 +260,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auth'
+    | '/contact'
+    | '/packages'
+    | '/pricing'
+    | '/process'
+    | '/products'
     | '/reset-password'
+    | '/services'
     | '/admin'
     | '/admin/activity'
     | '/admin/blog'
@@ -217,8 +287,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auth'
+    | '/contact'
+    | '/packages'
+    | '/pricing'
+    | '/process'
+    | '/products'
     | '/reset-password'
+    | '/services'
     | '/admin/activity'
     | '/admin/blog'
     | '/admin/enquiries'
@@ -237,8 +314,15 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/about'
     | '/auth'
+    | '/contact'
+    | '/packages'
+    | '/pricing'
+    | '/process'
+    | '/products'
     | '/reset-password'
+    | '/services'
     | '/_authenticated/admin'
     | '/_authenticated/admin/activity'
     | '/_authenticated/admin/blog'
@@ -259,12 +343,26 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
+  PackagesRoute: typeof PackagesRoute
+  PricingRoute: typeof PricingRoute
+  ProcessRoute: typeof ProcessRoute
+  ProductsRoute: typeof ProductsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reset-password': {
       id: '/reset-password'
       path: '/reset-password'
@@ -272,11 +370,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/packages': {
+      id: '/packages'
+      path: '/packages'
+      fullPath: '/packages'
+      preLoaderRoute: typeof PackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -459,8 +599,15 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
+  PackagesRoute: PackagesRoute,
+  PricingRoute: PricingRoute,
+  ProcessRoute: ProcessRoute,
+  ProductsRoute: ProductsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
