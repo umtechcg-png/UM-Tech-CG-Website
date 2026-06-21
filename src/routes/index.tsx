@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  ArrowRight, Sparkles, MessageCircle, Check, Quote,
+  Sparkles, MessageCircle, Check, Quote,
   CalendarCheck, FileText,
 } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
@@ -52,14 +52,6 @@ function Home() {
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl">
               Ubuntu Mzansi Tech Consulting Group helps startups, SMEs and enterprises accelerate digital transformation through innovative software, automation, consulting and cloud solutions.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-brand text-white font-medium shadow-glow hover:scale-[1.02] transition">
-                Book a Consultation <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link to="/services" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card text-foreground font-medium hover:bg-white/5 transition">
-                Explore Services
-              </Link>
-            </div>
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs uppercase tracking-widest text-muted-foreground">
               <span>● Strategy</span><span>● Technology</span><span>● Solutions</span><span>● Impact</span>
             </div>
