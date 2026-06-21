@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Mail, Phone, MapPin, Linkedin, Facebook, MessageCircle } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { SiteLayout } from "@/components/site/site-layout";
-import { Section, SectionHeading, Field } from "@/components/site/site-data";
+import { Section, SectionHeading, Field, socialLinks } from "@/components/site/site-data";
+
+const contactSocialIconMap = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram } as const;
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -48,10 +50,26 @@ function ContactPage() {
               <div className="aspect-video rounded-2xl glass-card grid place-items-center text-xs uppercase tracking-widest text-muted-foreground">
                 Google Maps placeholder
               </div>
-              <div className="flex gap-3 pt-2">
-                <a href="#" aria-label="LinkedIn" className="p-3 rounded-full glass-card hover:bg-white/10"><Linkedin className="w-4 h-4" /></a>
-                <a href="#" aria-label="Facebook" className="p-3 rounded-full glass-card hover:bg-white/10"><Facebook className="w-4 h-4" /></a>
-                <a href="https://wa.me/27000000000" aria-label="WhatsApp" className="p-3 rounded-full glass-card hover:bg-white/10"><MessageCircle className="w-4 h-4" /></a>
+              <div className="pt-2">
+                <div className="text-xs uppercase tracking-widest text-accent mb-3">Follow Us</div>
+                <div className="flex gap-3">
+                  {socialLinks.map((s) => {
+                    const Icon = contactSocialIconMap[s.icon];
+                    return (
+                      <a
+                        key={s.icon}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        className="p-3 rounded-full glass-card hover:bg-white/10 hover:scale-110 hover:shadow-glow transition-all duration-300"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                  <a href="https://wa.me/27000000000" aria-label="WhatsApp" className="p-3 rounded-full glass-card hover:bg-white/10 hover:scale-110 hover:shadow-glow transition-all duration-300"><MessageCircle className="w-4 h-4" /></a>
+                </div>
               </div>
             </div>
           </div>

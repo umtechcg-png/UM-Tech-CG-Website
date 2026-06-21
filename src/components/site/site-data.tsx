@@ -240,3 +240,9 @@ export const navLinks = [
   { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
 ] as const;
+
+export const socialLinks = [
+  { icon: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/ubuntu-mzansi-tech-cg-2533a9406/" },
+  { icon: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591128782975" },
+  { icon: "instagram", label: "Instagram", href: "https://www.instagram.com/umtechcg/" },
+] as const satisfies ReadonlyArray<{ icon: "linkedin" | "facebook" | "instagram"; label: string; href: string }>;
