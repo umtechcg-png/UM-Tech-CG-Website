@@ -1,9 +1,11 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, MessageCircle, CalendarCheck } from "lucide-react";
+import { Menu, X, MessageCircle, CalendarCheck, Linkedin, Facebook, Instagram } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
 import badgeAsset from "@/assets/umtechcg-badge.png.asset.json";
-import { navLinks, FooterCol } from "./site-data";
+import { navLinks, FooterCol, socialLinks } from "./site-data";
+
+const socialIconMap = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram } as const;
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -74,6 +76,26 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <FooterCol title="Services" links={["Consulting", "Web Development", "Mobile Apps", "Custom Software", "Cloud"]} />
           <FooterCol title="Products" links={["TrackSuite", "ServiceLayer", "DevFlow", "BizActivate"]} />
           <FooterCol title="Company" links={["About", "Process", "Packages", "Contact"]} />
+        </div>
+        <div className="max-w-7xl mx-auto mt-10 flex flex-col sm:flex-row items-center sm:justify-between gap-4">
+          <div className="text-xs uppercase tracking-widest text-accent">Follow Us</div>
+          <div className="flex gap-3">
+            {socialLinks.map((s) => {
+              const Icon = socialIconMap[s.icon];
+              return (
+                <a
+                  key={s.icon}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="p-3 rounded-full glass-card hover:bg-white/10 hover:scale-110 hover:shadow-glow transition-all duration-300"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              );
+            })}
+          </div>
         </div>
         <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-border flex flex-col md:flex-row gap-4 items-center justify-between text-xs text-muted-foreground">
           <div className="flex items-center gap-3">
