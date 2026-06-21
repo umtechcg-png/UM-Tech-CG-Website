@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  ArrowRight, Sparkles, MessageCircle, Check, Quote,
+  Sparkles, MessageCircle, Check, Quote,
   CalendarCheck, FileText,
 } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";

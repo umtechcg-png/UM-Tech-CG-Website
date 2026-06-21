@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Menu, X, MessageCircle, CalendarCheck } from "lucide-react";
+import { Menu, X, MessageCircle, CalendarCheck } from "lucide-react";
 import logoAsset from "@/assets/logo.asset.json";
 import badgeAsset from "@/assets/umtechcg-badge.png.asset.json";
 import { navLinks, FooterCol } from "./site-data";
