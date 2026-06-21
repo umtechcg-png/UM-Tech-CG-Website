@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Building practical, scalable technology solutions for South African startups, SMEs and enterprises. Consulting, software, cloud and automation." },
       { name: "author", content: "Ubuntu Mzansi Tech Consulting Group" },
       { property: "og:title", content: "UM Tech CG — Ubuntu Mzansi Tech Consulting Group" },
-      { property: "og:description", content: "Technology Solutions Designed for Growth. South African technology consulting for startups, SMEs and enterprises." },
+      { property: "og:description", content: "Building practical, scalable technology solutions for South African startups, SMEs and enterprises. Consulting, software, cloud and automation." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "UM Tech CG — Ubuntu Mzansi Tech Consulting Group" },
+      { name: "twitter:description", content: "Building practical, scalable technology solutions for South African startups, SMEs and enterprises. Consulting, software, cloud and automation." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/4rXzUywchgUzM3JvOKmRjYEiPeP2/social-images/social-1782044650774-Social_Media_Page.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/4rXzUywchgUzM3JvOKmRjYEiPeP2/social-images/social-1782044650774-Social_Media_Page.webp" },
     ],
     links: [
       {
