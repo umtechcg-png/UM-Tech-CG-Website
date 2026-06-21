@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Loader2, Shield } from "lucide-react";
 
@@ -23,10 +22,8 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const nav = useNavigate();
   const router = useRouter();
-  const [tab, setTab] = useState("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
   const [mfaChallenge, setMfaChallenge] = useState<null | { factorId: string; challengeId: string }>(null);
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
@@ -84,26 +81,6 @@ function AuthPage() {
     nav({ to: "/admin", replace: true });
   }
 
-  async function signUp(e: React.FormEvent) {
-    e.preventDefault();
-    setBusy(true);
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: fullName },
-        emailRedirectTo: window.location.origin + "/admin",
-      },
-    });
-    setBusy(false);
-    if (error) {
-      toast.error(error.message);
-      return;
-    }
-    toast.success("Account created. Check your email to confirm.");
-    setTab("signin");
-  }
-
   async function googleSignIn() {
     const result = await lovable.auth.signInWithOAuth("google", {
       redirect_uri: window.location.origin + "/admin",
@@ -157,13 +134,11 @@ function AuthPage() {
               </Button>
             </form>
           ) : (
-            <Tabs value={tab} onValueChange={setTab}>
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="signin">Sign in</TabsTrigger>
-                <TabsTrigger value="signup">Sign up</TabsTrigger>
-              </TabsList>
-              <TabsContent value="signin" className="space-y-4 pt-4">
-                <form onSubmit={signIn} className="space-y-3">
+            <div className="space-y-4 pt-2">
+              <p className="text-xs text-center text-muted-foreground">
+                Staff access only. Accounts are created by invitation.
+              </p>
+              <form onSubmit={signIn} className="space-y-3">
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -188,27 +163,7 @@ function AuthPage() {
                 <Button type="button" variant="outline" className="w-full" onClick={googleSignIn}>
                   Continue with Google
                 </Button>
-              </TabsContent>
-              <TabsContent value="signup" className="space-y-4 pt-4">
-                <form onSubmit={signUp} className="space-y-3">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full name</Label>
-                    <Input id="name" required value={fullName} onChange={(e) => setFullName(e.target.value)} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email2">Email</Label>
-                    <Input id="email2" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="password2">Password</Label>
-                    <Input id="password2" type="password" minLength={8} required value={password} onChange={(e) => setPassword(e.target.value)} />
-                  </div>
-                  <Button type="submit" disabled={busy} className="w-full">
-                    {busy && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}Create account
-                  </Button>
-                </form>
-              </TabsContent>
-            </Tabs>
+            </div>
           )}
           <div className="mt-6 text-center text-xs text-muted-foreground">
             <Link to="/" className="hover:text-foreground">← Back to site</Link>
