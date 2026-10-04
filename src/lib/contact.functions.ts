@@ -11,8 +11,8 @@ const submissionSchema = z.object({
 });
 
 
-// Public contact form submission. Validates input server-side, rate-limits,
-// and stores the enquiry in contact_submissions via the service role client.
+// Public contact form submission. Validates input server-side and stores the
+// enquiry in contact_submissions via the service role client.
 export const submitContactEnquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => submissionSchema.parse(input))
   .handler(async ({ data }) => {
