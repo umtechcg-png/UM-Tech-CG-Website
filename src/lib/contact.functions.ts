@@ -1,4 +1,4 @@
-import { createServerFn, getRequestHeader } from "@tanstack/react-start";
+import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
@@ -10,16 +10,6 @@ const submissionSchema = z.object({
   message: z.string().min(1, "Message is required").max(2000),
 });
 
-// Simple in-memory rate limit (per worker): max 10 submissions per IP per 10 minutes.
-const hits = new Map<string, number[]>();
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const windowMs = 10 * 60 * 1000;
-  const arr = (hits.get(ip) ?? []).filter((t) => now - t < windowMs);
-  arr.push(now);
-  hits.set(ip, arr);
-  return arr.length > 10;
-}
 
 // Public contact form submission. Validates input server-side, rate-limits,
 // and stores the enquiry in contact_submissions via the service role client.
