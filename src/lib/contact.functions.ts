@@ -16,10 +16,6 @@ const submissionSchema = z.object({
 export const submitContactEnquiry = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => submissionSchema.parse(input))
   .handler(async ({ data }) => {
-    const ip = getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-    if (rateLimited(ip)) {
-      return { ok: false as const, error: "Too many submissions. Please try again in a few minutes." };
-    }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.from("contact_submissions").insert({
       full_name: data.fullName,
