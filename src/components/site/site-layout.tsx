@@ -116,7 +116,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <CalendarCheck className="w-5 h-5" /> Book Consultation
         </Link>
         <a
-          href="https://wa.me/27000000000"
+          href="https://wa.me/27603918734"
           aria-label="Chat on WhatsApp"
           className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-gradient-brand text-white font-medium shadow-glow hover:scale-105 transition"
         >
