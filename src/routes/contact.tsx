@@ -65,11 +65,25 @@ function ContactPage() {
                   <div className="text-sm">umtechcg@gmail.com</div>
                 </div>
               </a>
+              <a href="mailto:nexus@umtechcg.co.za" className="flex items-center gap-4 glass-card rounded-2xl p-4 hover:bg-white/5">
+                <Mail className="w-5 h-5 text-accent" />
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Email</div>
+                  <div className="text-sm">nexus@umtechcg.co.za</div>
+                </div>
+              </a>
               <a href="tel:+27603918734" className="flex items-center gap-4 glass-card rounded-2xl p-4 hover:bg-white/5">
                 <Phone className="w-5 h-5 text-accent" />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
-                  <div className="text-sm">+27 (0) 60 391 8734</div>
+                  <div className="text-sm">060 391 8734</div>
+                </div>
+              </a>
+              <a href="https://wa.me/27603918734" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 glass-card rounded-2xl p-4 hover:bg-white/5">
+                <MessageCircle className="w-5 h-5 text-accent" />
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</div>
+                  <div className="text-sm">060 391 8734</div>
                 </div>
               </a>
               <div className="flex items-center gap-4 glass-card rounded-2xl p-4">
